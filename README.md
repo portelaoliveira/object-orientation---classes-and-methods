@@ -44,4 +44,25 @@ Classe __Pandas__:
 
 Cada __Objeto__ é um __Tipo__. Dizemos: *_“É um objeto do Tipo String, é um objeto do tipo Int, é um Objeto do Tipo DataFrame...”_*
 
+### Programação Orientada a Objeto X Programação Estruturada
+
+#### Programação Orientada a Objeto
+
+<p align="center">
+    <img src="imgs/poo.png">
+</p>
+
+#### Programação Estruturada
+
+<p align="center">
+    <img src="imgs/estruturada.png">
+</p>
+
+#### Qual a vantagem da Orientação a Objeto?
+
+  * Aproveitar o código sem precisar refazer/copiar tudo;
+  * __Encapsulamento__ -> Proteção a mudanças indesejadas (ex: TV – você não pode desligar a tv no botão de mudar o volume);
+  * __Herança__ -> Instâncias do Objeto tem as mesmas características, apesar de ter valores diferentes;
+  * __Polimorfismo__ -> Um mesmo método pode ter várias “formas” em diferentes classes (ou subclasses) – ex: Animais -> Gatos x Cachorros.
+
 <!--
