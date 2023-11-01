@@ -12,26 +12,35 @@ __Classes__ são Objetos e __Métodos__ é o que aquele Objeto consegue fazer. J
 
 #### Exemplos
 
-Classe __Classes__:
+Classe __Classe__:
 
-![Alt text](./classe_classes.svg)
-
+<p align="center">
+    <img src="classe_classes.svg">
+</p>
 
 Classe __Pessoa__:
 
-![Alt text](./classe_pessoa.svg)
+<p align="center">
+    <img src="classe_pessoa.svg">
+</p>
 
 Classe __TV__:
 
-![Alt text](./classe_tv.svg)
+<p align="center">
+    <img src="classe_tv.svg">
+</p>
 
 Classe __String__:
 
-![Alt text](./classe_string.svg)
+<p align="center">
+    <img src="classe_string.svg">
+</p>
 
 Classe __Pandas__:
 
-![Alt text](./classe_pandas.svg)
+<p align="center">
+    <img src="classe_pandas.svg">
+</p>
 
 Cada __Objeto__ é um __Tipo__. Dizemos: *_“É um objeto do Tipo String, é um objeto do tipo Int, é um Objeto do Tipo DataFrame...”_*
 
