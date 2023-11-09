@@ -10,7 +10,41 @@
 
 __Classes__ são Objetos e __Métodos__ é o que aquele Objeto consegue fazer. Já os __Atributos__, refere-se a quais são as informações/propriedades desse Objeto.
 
-Em Python, dividimos os métodos, em 2 grupos: __Métodos de instância__
+##### Exemplos - Classes
+
+Classe __Objeto__:
+
+<p align="center">
+    <img src="imgs/classe_classes.svg">
+</p>
+
+Classe __Pessoa__:
+
+<p align="center">
+    <img src="imgs/classe_pessoa.svg">
+</p>
+
+Classe __TV__:
+
+<p align="center">
+    <img src="imgs/classe_tv.svg">
+</p>
+
+Classe __String__:
+
+<p align="center">
+    <img src="imgs/classe_string.svg">
+</p>
+
+Classe __Pandas__:
+
+<p align="center">
+    <img src="imgs/classe_pandas.svg">
+</p>
+
+Cada __Objeto__ é um __Tipo__. Dizemos: *_“É um objeto do Tipo String, é um objeto do tipo Int, é um Objeto do Tipo DataFrame...”_*
+
+Em Python, dividimos os __Métodos__, em 2 grupos: __Métodos de instância__
 e __Métodos de Classe__.
 
 __Métodos de instância__ é o método dunder __init__,  \___init_\__ é um método especial chamado de construtor e sua função é construir o objeto a partir da classe. Todo elemento em Python que inicia e finaliza com duplo underline é chamado de dunder (Double Underline). Os métodos/funções dunder em Python são chamados de métodos mágicos. Criamos métodos de instância, quando os métodos precisam fazer acesso a atributos.
@@ -123,7 +157,7 @@ print(user.contador)
 print(user.definicao())
 ```
 
-Já os atributos são divididos em __Atributos de Instância__, __Atributos de Classe__ e __Atributos de Dinâmicos__ e esses atributos podem ser __Público__ ou __Privado__. Isso significa que estamos falando da acessibilidade dos Atributos, ou seja, em um __Atributo Privado__, só é possível fazer acesso dentro da própria Classe onde foi declarado. Já __Atributo Público__, é possível acessar em qualquer parte do programa, até mesmo em outras Classes.
+Já os atributos são divididos em __Atributos de Instância__, __Atributos de Classe__ e __Atributos Dinâmicos__ e esses atributos podem ser __Público__ ou __Privado__. Isso significa que estamos falando da acessibilidade dos Atributos, ou seja, em um __Atributo Privado__, só é possível fazer acesso dentro da própria Classe onde foi declarado. Já __Atributo Público__, é possível acessar em qualquer parte do programa, até mesmo em outras Classes.
 
 __Atributo Público__
 
@@ -251,7 +285,7 @@ print(p2.valor)  # Acesso possível, mas incorreto de um atributo de classe
 print(Produto.imposto)  # Acesso correto de um atributo de classe
 ```
 
-__Atributos de Dinâmicos__ é um atributo de instância que pode ser criado em tempo de execução. Porém, o atributo dinâmico será exclusivo da instância que o criou.
+__Atributos Dinâmicos__ é um atributo de instância que pode ser criado em tempo de execução. Porém, o atributo dinâmico será exclusivo da instância que o criou.
 
 ```python
 class Produto:
@@ -292,41 +326,6 @@ del p2.descricao
 print(p1.__dict__)
 print(p2.__dict__)
 ```
-
-#### Exemplos
-
-Classe __Objeto__:
-
-<p align="center">
-    <img src="imgs/classe_classes.svg">
-</p>
-
-Classe __Pessoa__:
-
-<p align="center">
-    <img src="imgs/classe_pessoa.svg">
-</p>
-
-Classe __TV__:
-
-<p align="center">
-    <img src="imgs/classe_tv.svg">
-</p>
-
-Classe __String__:
-
-<p align="center">
-    <img src="imgs/classe_string.svg">
-</p>
-
-Classe __Pandas__:
-
-<p align="center">
-    <img src="imgs/classe_pandas.svg">
-</p>
-
-Cada __Objeto__ é um __Tipo__. Dizemos: *_“É um objeto do Tipo String, é um objeto do tipo Int, é um Objeto do Tipo DataFrame...”_*
-
 ### Programação Orientada a Objeto X Programação Estruturada
 
 #### Programação Orientada a Objeto
@@ -471,4 +470,629 @@ conta2.transferir(100, conta1)
 conta1.extrato()
 conta2.extrato()
 ```
+# Herança e Polimorfismo
+
+### **Herança (Inheritance):**
+
+A ideia de herança é a de reaproveitar código. Também extender nossas classes.
+
+**OBS:** Com a herança, a partir de uma classe existente, nós extendemos outra classe
+que passa a herdar atributos e métodos da classe herdada.
+
+**Cliente:**
+- nome;
+- sobrenome;
+- cpf;
+- renda;
+
+**Funcionário:**
+- nome;
+- sobrenome;
+- cpf;
+- matricula;
+
+**Perguntar:** Existe alguma entidade genérica o suciente para encapsular os atributos
+e métodos comuns a outras entidades?
+
+```python
+class Cliente:
+
+    def __init__(self, nome, sobrenome, cpf, renda):
+        self.__nome = nome
+        self.__sobrenome = sobrenome
+        self.__cpf = cpf
+        self.__renda = renda
+
+    def nome_completo(self):
+        return f'{self.__nome} {self.__sobrenome}'
+
+class Funcionario:
+
+    def __init__(self, nome, sobrenome, cpf, matricula):
+        self.__nome = nome
+        self.__sobrenome = sobrenome
+        self.__cpf = cpf
+        self.__matricula = matricula
+
+    def nome_completo(self):
+        return f'{self.__nome} {self.__sobrenome}'
+
+cliente1 = Cliente('Angelina', 'Jolie', '123.456.789-00', 5000)
+funcionario1 = Funcionario('Felicity', 'Jones', '987.654.321-11', 1234)
+
+print(cliente1.nome_completo())
+print(funcionario1.nome_completo())
+```
+
+**OBS:** Quando uma classe herda de outra classe ela herda **TODOS** os atributos e métodos da classe herdada.
+
+Quando uma classe herda de outra classe, a classe herdada é conhecida por:
+[Pessoa]
+- Super Classe;
+- Classe Mãe;
+- Classe Pai;
+- Classe Base;
+- Classe Genérica;
+
+Quando uma classe herda de outra classe, ela é chamada:
+[Cliente, Funcionario]
+- Sub Classe;
+- Classe Filha;
+- Classe Específica;
+
+```python
+class Pessoa:
+
+    def __init__(self, nome, sobrenome, cpf):
+        self.__nome = nome
+        self.__sobrenome = sobrenome
+        self.__cpf = cpf
+
+    def nome_completo(self):
+        return f'{self.__nome} {self.__sobrenome}'
+
+class Cliente(Pessoa):
+    """Cliente herda de Pessoa"""
+
+    def __init__(self, nome, sobrenome, cpf, renda):
+        Pessoa.__init__(self, nome, sobrenome, cpf)  # Forma não comum de acessar dados da super classe
+        self.__renda = renda
+
+class Funcionario(Pessoa):
+    """Funcionario herda de Pessoa"""
+
+    def __init__(self, nome, sobrenome, cpf, matricula):
+        super().__init__(nome, sobrenome, cpf)  # Forma comum de acessar dados da super classe
+        self.__matricula = matricula
+
+cliente1 = Cliente('Angelina', 'Jolie', '123.456.789-00', 5000)
+funcionario1 = Funcionario('Felicity', 'Jones', '987.654.321-11', 1234)
+
+print(cliente1.nome_completo())
+print(funcionario1.nome_completo())
+
+print(cliente1.__dict__)
+
+print(funcionario1.__dict__)
+```
+
+### **Sobrescrita de Métodos (Overriding):**
+
+Sobrescrita de método, ocorre quando reescrevemos/reimplementamos um método presente na super classe em classes filhas.
+
+```python
+class Pessoa:
+
+    def __init__(self, nome, sobrenome, cpf):
+        self.__nome = nome
+        self.__sobrenome = sobrenome
+        self.__cpf = cpf
+
+    def nome_completo(self):
+        return f'{self.__nome} {self.__sobrenome}'
+
+class Cliente(Pessoa):
+    """Cliente herda de Pessoa"""
+
+    def __init__(self, nome, sobrenome, cpf, renda):
+        Pessoa.__init__(self, nome, sobrenome, cpf)  # Forma não comum de acessar dados da super classe
+        self.__renda = renda
+
+class Funcionario(Pessoa):
+    """Funcionario herda de Pessoa"""
+
+    def __init__(self, nome, sobrenome, cpf, matricula):
+        super().__init__(nome, sobrenome, cpf)  # Forma comum de acessar dados da super classe
+        self.__matricula = matricula
+
+    def nome_completo(self):
+        print(super().nome_completo())
+        print(self._Pessoa__cpf)
+        return f'Funcionário: {self.__matricula} Nome: {self._Pessoa__nome}'
+
+cliente1 = Cliente('Angelina', 'Jolie', '123.456.789-00', 5000)
+funcionario1 = Funcionario('Felicity', 'Jones', '987.654.321-11', 1234)
+
+print(cliente1.nome_completo())
+print(funcionario1.nome_completo())
+```
+
+### **Propriedades - Properties:**
+
+Em linguagens de programação como o Java, ao declararmos atributos privados nas classes,
+costumamos a criar métodos públicos para manipulação desses atributos. Esses métodos
+são conhecidos por getters e setters, onde os getters retornam o valor do atributo
+e os setters alteram o valor do mesmo.
+
+```python
+class Conta:
+
+    contador = 0
+
+    def __init__(self, titular, saldo, limite):
+        self.__numero = Conta.contador + 1
+        self.__titular = titular
+        self.__saldo = saldo
+        self.__limite = limite
+        Conta.contador += 1
+
+    def extrato(self):
+        return f'Saldo de {self.__saldo} do cliente {self.__titular}'
+
+    def depositar(self, valor):
+        self.__saldo += valor
+
+    def sacar(self, valor):
+        self.__saldo -= valor
+
+    def transferir(self, valor, destino):
+        self.__saldo -= valor
+        destino.__saldo += valor
+
+    def get_numero(self):
+        return self.__numero
+
+    def get_titular(self):
+        return self.__titular
+
+    def set_titular(self, titular):
+        self.__titular = titular
+
+    def get_saldo(self):
+        return self.__saldo
+
+    def get_limite(self):
+        return self.__limite
+
+    def set_limite(self, limite):
+        self.__limite = limite
+
+conta1 = Conta('Felicity', 3000, 5000)
+conta2 = Conta('Angelina', 2000, 4000)
+
+print(conta1.extrato())
+print(conta2.extrato())
+
+soma = conta1.get_saldo() + conta2.get_saldo()
+print(f'A soma do saldo das contas é {soma}')
+
+print(conta1.__dict__)
+conta1.set_limite(999999)
+print(conta1.__dict__)
+```
+
+### **Getters e Setters:**
+
+```python
+class Conta:
+
+    contador = 0
+
+    def __init__(self, titular, saldo, limite):
+        self.__numero = Conta.contador + 1
+        self.__titular = titular
+        self.__saldo = saldo
+        self.__limite = limite
+        Conta.contador += 1
+
+		# getters
+    @property
+    def numero(self):
+        return self.__numero
+
+    @property
+    def titular(self):
+        return self.__titular
+
+    @property
+    def saldo(self):
+        return self.__saldo
+
+    @property
+    def limite(self):
+        return self.__limite
+
+		# setters
+    @limite.setter
+    def limite(self, novo_limite):
+        self.__limite = novo_limite
+
+    def extrato(self):
+        return f'Saldo de {self.__saldo} do cliente {self.__titular}'
+
+    def depositar(self, valor):
+        self.__saldo += valor
+
+    def sacar(self, valor):
+        self.__saldo -= valor
+
+    def transferir(self, valor, destino):
+        self.__saldo -= valor
+        destino.__saldo += valor
+
+    @property
+    def valor_total(self):
+        return self.__saldo + self.__limite
+
+conta1 = Conta('Felicity', 3000, 5000)
+conta2 = Conta('Angelina', 2000, 4000)
+
+print(conta1.extrato())
+print(conta2.extrato())
+
+soma = conta1.saldo + conta2.saldo
+print(f'A soma do saldo das contas é {soma}')
+
+print(conta1.__dict__)
+conta1.limite = 76543
+print(conta1.__dict__)
+print(conta1.limite)
+
+print(conta1.valor_total)
+print(conta2.valor_total)
+```
+
+### **O método super( ):**
+
+O método super( ) se refere á super classe.
+
+```python
+class Animal:
+
+    def __init__(self, nome, especie):
+        self.__nome = nome
+        self.__especie = especie
+
+    def faz_som(self, som):
+        print(f'O {self.__nome} fala {som}')
+
+class Gato(Animal):
+
+    def __init__(self, nome, especie, raca):
+        # Animal.__init__(self, nome, especie)
+        super().__init__(nome, especie)
+        super().faz_som('auauauaua')
+        self.__raca = raca
+
+felix = Gato('Felix', 'Felino', 'Angorá')
+
+felix.faz_som('miau')
+```
+
+Com o método super( ), é possível fazer acesso ao método construtor e também aos outros métodos.
+
+### **Herança Múltipla:**
+
+Herança Múltipla nada mais é do que a possibilidade de uma classe herdar de múltiplas classes,
+fazendo com que a classe filha herde todos os atributos e métodos de todas as classes herdadas.
+
+**OBS:** A herança múltipla pode ser feita de duas maneiras:
+- Por Multiderivação Direta;
+- Por Multiderivação Indireta;
+
+### **Multiderivação Direta:**
+
+```python
+class Base1:
+    pass
+
+class Base2:
+    pass
+
+class Base3:
+    pass
+
+class MultiDerivada(Base1, Base2, Base3):
+    pass
+```
+
+### **Multiderivação Indireta:**
+
+```python
+class Base1:
+    pass
+
+class Base2(Base1):
+    pass
+
+class Base3(Base2):
+    pass
+
+class MultiDerivada(Base3):
+    pass
+```
+
+**OBS:** Não importa se a derivação é direta ou indireta. A classe que realizar a herança herdará
+todos os atributos e métodos das super classes.
+
+```python
+class Animal:
+
+    def __init__(self, nome):
+        self.__nome = nome
+
+    def cumprimentar(self):
+        return f'Eu sou {self.__nome}'
+
+class Aquatico(Animal):
+
+    def __init__(self, nome):
+        super().__init__(nome)
+
+    def nadar(self):
+        return f'{self._Animal__nome} está nadando.'
+
+    def cumprimentar(self):
+        return f'Eu sou {self._Animal__nome} do mar!'
+
+class Terrestre(Animal):
+
+    def __init__(self, nome):
+        super().__init__(nome)
+
+    def andar(self):
+        return f'{self._Animal__nome} está andando.'
+
+    def cumprimentar(self):
+        return f'Eu sou {self._Animal__nome} da terra!'
+
+class Pinguim(Aquatico, Terrestre):
+		"Essa ordem na herança da classe Pinguim(Aquatico, Terrestre) influencia na
+			na ordem de excução do método."
+
+    def __init__(self, nome):
+        super().__init__(nome)
+
+# Testando
+
+baleia = Aquatico('Wally')
+print(baleia.nadar())
+print(baleia.cumprimentar())
+
+tatu = Terrestre('Xim')
+print(tatu.andar())
+print(tatu.cumprimentar())
+
+tux = Pinguim('Tux')
+print(tux.andar())
+print(tux.nadar())
+print(tux.cumprimentar())  # Eu sou Tux da terra! / Eu sou Tux do mar! ???? Method Resolution Order - MRO
+```
+
+A ordem da herança influencia na execução do método.
+
+```python
+# Objeto é instância de...
+
+print(f'Tux é instância de Pinguim? {isinstance(tux, Pinguim)}')  # True
+print(f'Tux é instância de Aquatico? {isinstance(tux, Aquatico)}')  # True
+print(f'Tux é instância de Terrestre? {isinstance(tux, Terrestre)}')  # True
+print(f'Tux é instância de Animal? {isinstance(tux, Animal)}')  # True
+print(f'Tux é instância de object? {isinstance(tux, object)}')  # True
+```
+
+### **MRO - Method Resolution Order:**
+
+Method Resolution Order (Resolução de Ordem de Métodos), é a ordem
+de execução dos métodos (quem será executado primeiro).
+
+Em Python, a gente pode conferir a ordem de execução dos métodos (MRO) de 3 formas:
+- Via propriedade da classe **mro**
+- Via método mro( )
+- Via help
+
+<p align="center">
+    <img src="imgs/MRO.png">
+</p>
+
+Tenta executar o método na seguinte ordem:
+
+Pinguim
+
+Terrestre
+
+Aquatico
+
+Animais
+
+object
+
+```python
+class Animal:
+
+    def __init__(self, nome):
+        self.__nome = nome
+
+    def cumprimentar(self):
+        return f'Eu sou {self.__nome}'
+
+class Aquatico(Animal):
+
+    def __init__(self, nome):
+        super().__init__(nome)
+
+    def nadar(self):
+        return f'{self._Animal__nome} está nadando.'
+
+
+
+class Terrestre(Animal):
+
+    def __init__(self, nome):
+        super().__init__(nome)
+
+    def andar(self):
+        return f'{self._Animal__nome} está andando.'
+
+    def cumprimentar(self):
+        return f'Eu sou {self._Animal__nome} da terra!'
+
+class Pinguim(Aquatico, Terrestre):
+
+    def __init__(self, nome):
+        super().__init__(nome)
+
+# Testando
+
+tux = Pinguim('Tux')
+print(tux.cumprimentar())
+
+"""
+Pinguim(Aquatico, Terrestre)
+Eu sou Tux do mar!
+
+Pinguim(Terrestre, Aquatico)
+Eu sou Tux da terra!
+"""
+```
+
+### **Polimorfismo:**
+
+Poli -> Muitas
+Morfis -> Formas
+
+Quando a gente reimplementa um método presente na classe pai em classes filhas
+estamos realizando uma sobrescrita de método (Overriding).
+
+O overriding é a melhor representação do polimorfismo.
+
+```python
+class Animal(object):
+
+    def __init__(self, nome):
+        self.__nome = nome
+
+    def falar(self):
+        raise NotImplementedError('A classe filha precisa implementar este método')
+
+    def comer(self):
+        print(f'{self.__nome} está comendo...')
+
+class Cachorro(Animal):
+
+    def __init__(self, nome):
+        super().__init__(nome)
+
+    def falar(self):
+        print(f'{self._Animal__nome} fala wau wau')
+
+class Gato(Animal):
+
+    def __init__(self, nome):
+        super().__init__(nome)
+
+    def falar(self):
+        print(f'{self._Animal__nome} fala miau!')
+
+class Rato(Animal):
+
+    def __init__(self, nome):
+        super().__init__(nome)
+
+    def falar(self):
+        print(f'{self._Animal__nome} fala algo...')
+
+# Testes
+
+felix = Gato('Felix')
+felix.comer()
+felix.falar()
+
+pluto = Cachorro('Pluto')
+pluto.comer()
+pluto.falar()
+
+mickey = Rato('Mickey')
+mickey.comer()
+mickey.falar()
+```
+
+### **Métodos Mágicos:**
+
+Métodos Mágicos, são todos os métodos que utilizam dunder.
+
+**dunder init -> __init__( ):**
+
+```python
+def __init__(self, titulo, autor, paginas):
+    self.titulo = titulo
+    self.autor = autor
+    self.paginas = paginas
+```
+
+**Dunder > Double Underscore:**
+
+dunder repr -> Representação do objeto
+
+```python
+def __repr__(self):
+    return f'{self.titulo} escrito por {self.autor}'
+```
+
+```python
+class Livro:
+
+    def __init__(self, titulo, autor, paginas):
+        self.titulo = titulo
+        self.autor = autor
+        self.paginas = paginas
+
+    def __str__(self):
+        return self.titulo
+
+    def __repr__(self):
+        return f'{self.titulo} escrito por {self.autor}'
+
+    def __len__(self):
+        return self.paginas
+
+    def __del__(self):
+        print('Um objeto do tipo Livro foi deletado da memória')
+
+    def __add__(self, outro):
+        return f'{self} - {outro}'
+
+    def __mul__(self, outro):
+        if isinstance(outro, int):
+            msg = ''
+            for n in range(outro):
+                msg += ' ' + str(self)
+            return msg
+        return 'Não posso multiplicar'
+
+livro1 = Livro('Python Rocks!', 'Geek University', 400)
+livro2 = Livro('Inteligência Artificial com Python', 'Geek University', 350)
+
+print(livro1)
+
+print(livro2)
+
+print(len(livro1))
+print(len(livro2))
+
+print(livro1 + livro2)
+
+print(livro1 * 5)
+```
+
 <!--
